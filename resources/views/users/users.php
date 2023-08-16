@@ -28,7 +28,13 @@
                     <td><?php echo $user->created_at ?></td>
                     <td>
                     <a class="btn btn-warning" href=<?php echo "/users/".$user->id."/edit" ?> role="button">edit</a>
-                    <a class="btn btn-danger" href="/users" role="button">delete</a>
+                    <form action="/users" method="post">
+                        <?php  echo csrf_field();?>
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="id" value=<?php echo $user->id?>>
+
+                        <button class="btn btn-danger" type="submit">delete</button>
+                    </form>
 
 
                     </td>

@@ -11,23 +11,26 @@
 <div class="container">
 
 <h1>update user</h1>
-<form action="/users" method="put">
-    <input type="hidden" name="_token" value="1hfdhhdddbbbbgnknglmfnknfbafbm,nkefn,nafn,manfb">
+<form action="/users" method="post">
+    <input type="hidden" name="_method" value="put">
+    <input type="hidden" name="id" value=<?php echo $user->id?>>
+
+    <?php  echo csrf_field();?>
     <div class="mb-3">
       <label for="" class="form-label">Name</label>
-      <input type="text" name="username" id="username" class="form-control" placeholder="" aria-describedby="helpId">
+      <input type="text" name="username" value=<?php echo $user->name ?> id="username" class="form-control" placeholder="" aria-describedby="helpId">
       <small id="helpId" class="text-muted">username</small>
     </div>
 
     <div class="mb-3">
       <label for="" class="form-label">email</label>
-      <input type="email" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId">
+      <input type="email" name="email" id="email" value=<?php echo $user->email ?>  class="form-control" placeholder="" aria-describedby="helpId">
       <small id="helpId" class="text-muted">email</small>
     </div>
 
     <div class="mb-3">
       <label for="" class="form-label">password</label>
-      <input type="password" name="password" id="password" class="form-control" placeholder="" aria-describedby="helpId">
+      <input type="password" name="password" id="password" value=<?php echo $user->password ?> class="form-control" placeholder="" aria-describedby="helpId">
       <small id="helpId" class="text-muted">password</small>
     </div>
 

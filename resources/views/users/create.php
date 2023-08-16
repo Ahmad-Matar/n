@@ -12,7 +12,7 @@
 
     <h1>create user</h1>
     <form action="/users" method="post">
-        <input type="hidden" name="_token" value="1hfdhhdddbbbbgnknglmfnknfbafbm,nkefn,nafn,manfb">
+        <input type="hidden" name="_token" value=<?php echo csrf_token(); ?>>
         <div class="mb-3">
           <label for="" class="form-label">Name</label>
           <input type="text" name="username" id="username" class="form-control" placeholder="" aria-describedby="helpId">
