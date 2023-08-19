@@ -1,23 +1,35 @@
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href=<?php echo asset('css/bootstrap.css')?>>
+    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 
 </head>
 <body>
     <div class="container">
+      @if($errors->any())
+          @foreach($errors->all() as $error)
+            <li class="alert alert-danger"> {{$error}} </li>
 
+          @endforeach
+      @endif
     <h1>create user</h1>
     <form action="/users" method="post">
-        <input type="hidden" name="_token" value=<?php echo csrf_token(); ?>>
+        @csrf
+
         <div class="mb-3">
           <label for="" class="form-label">Name</label>
-          <input type="text" name="username" id="username" class="form-control" placeholder="" aria-describedby="helpId">
+          <input type="text" name="username" id="username" class="form-control" placeholder="" aria-describedby="helpId" >
           <small id="helpId" class="text-muted">username</small>
+          @errors->has('username')
+            <p class="invalid-feedback">{{}}</p>
+          @enderrors
         </div>
+        bac
 
         <div class="mb-3">
           <label for="" class="form-label">email</label>
@@ -33,7 +45,7 @@
 
         <div class="mb-3">
           <label for="" class="form-label">confirm_password</label>
-          <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="" aria-describedby="helpId">
+          <input type="password" name="password_confirmation" id="confirm_password" class="form-control" placeholder="" aria-describedby="helpId">
           <small id="helpId" class="text-muted">confirm_password</small>
         </div>
 

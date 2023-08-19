@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href=<?php echo asset('css/bootstrap.css')?>>
+    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 </head>
 <body>
     <div class="container">
@@ -20,18 +20,18 @@
 
         </thead>
         <tbody>
-            <?php foreach($users as $user) { ?>
+            @foreach($users as $user)
                 <tr>
-                    <td><a href=<?php echo '/users/show/'.$user->id ?>><?php echo $user->name ?></a></td>
-                    <td><?php echo $user->email ?></td>
-                    <td><?php echo $user->password ?></td>
-                    <td><?php echo $user->created_at ?></td>
+                    <td><a href={{ url("/users/show/".$user->id)}}>{{$user->name}} </a></td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->password}}</td>
+                    <td>{{$user->created_at}}</td>
                     <td>
-                    <a class="btn btn-warning" href=<?php echo "/users/".$user->id."/edit" ?> role="button">edit</a>
+                    <a class="btn btn-warning" href={{ url("/users/".$user->id."/edit") }} role="button">edit</a>
                     <form action="/users" method="post">
-                        <?php  echo csrf_field();?>
-                        <input type="hidden" name="_method" value="delete">
-                        <input type="hidden" name="id" value=<?php echo $user->id?>>
+                        @csrf
+                        @method('delete')
+                        <input type="hidden" name="id" value="{{$user->id}}">
 
                         <button class="btn btn-danger" type="submit">delete</button>
                     </form>
@@ -41,7 +41,7 @@
 
                 </tr>
 
-            <?php } ?>
+            @endforeach
 
         </tbody>
     </table>
