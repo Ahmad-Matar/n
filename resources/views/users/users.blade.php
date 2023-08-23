@@ -27,7 +27,7 @@
                     <td>{{$user->password}}</td>
                     <td>{{$user->created_at}}</td>
                     <td>
-                    <a class="btn btn-warning" href={{ url("/users/".$user->id."/edit") }} role="button">edit</a>
+                     <a class="btn btn-warning" href={{ url("/users/".$user->id."/edit") }} role="button">edit</a>
                     <form action="/users" method="post">
                         @csrf
                         @method('delete')
