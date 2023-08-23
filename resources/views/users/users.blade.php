@@ -25,7 +25,7 @@
                     <td><a href={{ url("/users/show/".$user->id)}}>{{$user->name}} </a></td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->password}}</td>
-                    <td>{{$user->created_at}}</td>
+                      <td>{{$user->created_at}}</td>
                     <td>
                      <a class="btn btn-warning" href={{ url("/users/".$user->id."/edit") }} role="button">edit</a>
                     <form action="/users" method="post">
